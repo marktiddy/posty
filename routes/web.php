@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +19,7 @@ Route::get('/', function() {
 Route::get('/posts', function () {
     return view('posts.index');
 });
+//Call the action index from our RegisterController
+//Naming it makes it easy to come back to for nav etc.
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('register');
